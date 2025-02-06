@@ -11,6 +11,9 @@ public class DevDoodleMaster : MonoBehaviour
 
     public GameObject AccPointPrefab;
 
+
+    //Player reference
+
     void Update()
     {
 
@@ -25,12 +28,44 @@ public class DevDoodleMaster : MonoBehaviour
             AccPointPositions = _currentDoodler.GenerateAccuracyPoints();
             GameObject accpointParent = new GameObject();
             accpointParent.name = "AccPoints";
+            int count = 0;
             foreach (Vector3 t in AccPointPositions)
             {
-                Instantiate(AccPointPrefab, t, Quaternion.identity, accpointParent.transform);
+             GameObject currentPoint=   Instantiate(AccPointPrefab, t, Quaternion.identity, accpointParent.transform);
+                currentPoint.name = "point" + count;
+                count++;
             }
+            //-- CODE TO DETECT A CLOSED SHAPE HERE 
 
+            Collider2D lastPoint = accpointParent.transform.GetChild(accpointParent.transform.childCount - 1).GetComponent<Collider2D>();
+          //  print("THE LAST POINT IS:" + lastPoint.name);
             _currentDoodler = null;
+
+            bool attackSuccesful = false; 
+            for(int i = 0; i < transform.childCount; i++)
+            {
+                Collider2D firstTenPoint = accpointParent.transform.GetChild(i).GetComponent<CircleCollider2D>();
+                if (lastPoint.bounds.Intersects(firstTenPoint.bounds)){
+                    print("LOOP!");
+                    break;
+                }
+                else
+                {
+                    print("failed");
+                }
+
+
+            }
+            if (attackSuccesful)
+            {
+                //do stuff
+                //destroy
+            
+            }
+            else
+            {
+                
+            }
         }
         if (_currentDoodler != null)
         {

@@ -19,6 +19,7 @@ public class Doodler : MonoBehaviour
         {
             _PointsList = new List<Vector2>(); //initialize list
             SetPoint(position);
+       
             return;
         }
         int lastindex = _PointsList.Count - 1;

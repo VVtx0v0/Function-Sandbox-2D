@@ -75,6 +75,7 @@ public class DevDoodler : MonoBehaviour
 
             outputList.Add(new Vector3(_PointsList[i].x, _PointsList[i].y, 0));
         }
+        print("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         return outputList;  
     }
 }

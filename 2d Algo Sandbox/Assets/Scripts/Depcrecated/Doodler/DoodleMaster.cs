@@ -50,6 +50,7 @@ public class DoodleMaster : MonoBehaviour
         {
             d.SetLineColor(targetColor, targetAlpha);
         }
+       
     }
     public void ClearDoodles()
     {
